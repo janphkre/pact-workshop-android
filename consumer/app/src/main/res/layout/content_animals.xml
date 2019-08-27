@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="au.com.dius.pactconsumer.presentation.MainActivity"
+        tools:listitem="@layout/layout_animal"
+        tools:showIn="@layout/activity_animals" />
+
+    <ProgressBar
+        android:id="@+id/view_loading"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txt_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:visibility="gone"
+        tools:text="@string/error_message" />
+</FrameLayout>
+
