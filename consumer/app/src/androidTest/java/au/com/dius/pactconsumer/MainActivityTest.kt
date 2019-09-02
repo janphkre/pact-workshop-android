@@ -5,7 +5,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import au.com.dius.pactconsumer.pact.AnimalPacts
 import au.com.dius.pactconsumer.pact.PactProvider
 import au.com.dius.pactconsumer.presentation.TestActivity
 import org.hamcrest.CoreMatchers.not
@@ -23,8 +24,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
-    @Rule
-    val activityTestRule = ActivityTestRule(TestActivity::class.java)
+    @get:Rule
+    val activityTestRule = ActivityTestRule(TestActivity::class.java, false, false)
 
     @Before
     fun setupPactServer() {
@@ -38,7 +39,9 @@ class MainActivityTest {
 
     @Test
     fun useAppContext() {
-        PactProvider.setPact()
+        PactProvider.setPact(AnimalPacts.animalCollectionPact)
+        activityTestRule.launchActivity(null)
+
         onView(withId(R.id.txt_error)).check(matches(not(isDisplayed())))
     }
 }

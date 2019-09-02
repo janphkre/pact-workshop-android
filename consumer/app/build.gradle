@@ -12,7 +12,7 @@ android {
         targetSdkVersion rootProject.ext.target_sdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -41,4 +41,5 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
     androidTestImplementation "com.github.janphkre:laminat:$laminat_version"
     androidTestImplementation "androidx.test:rules:$test_rules_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
 }

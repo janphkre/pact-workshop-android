@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 import java.util.Calendar
 
 data class AnimalCollection(
-    @SerializedName("valid_date")
-    val validDate: Calendar,
+    val valid_date: Calendar,
     val animals: List<Animal>
 )

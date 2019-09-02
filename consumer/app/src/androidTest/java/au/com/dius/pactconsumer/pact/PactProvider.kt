@@ -10,7 +10,7 @@ import java.lang.IllegalStateException
 object PactProvider {
 
     // You may want to select a error code that is not in the range of your expected http codes
-    private const val pactErrorCode = 999
+    const val pactErrorCode = 999
 
     private var pactServer: StatefullPactWebServer? = null
     private var dataProvider: PactAnimalProvider? = null
@@ -34,10 +34,7 @@ object PactProvider {
         return dataProvider ?: throw IllegalStateException("The pact provider has not been setup yet!")
     }
 
-    fun setPact(vararg pacts: RequestResponsePact) {
-        pactServer?.let {
-            it.clearPacts()
-            it.addPacts(pacts.asList())
-        } ?: throw IllegalStateException("The pact provider has not been setup yet!")
+    fun setPact(pact: RequestResponsePact) {
+        pactServer?.addPact(pact) ?: throw IllegalStateException("The pact provider has not been setup yet!")
     }
 }
